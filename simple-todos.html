@@ -1,0 +1,39 @@
+<head>
+	<title>Simple ToDos</title>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>To Do List</h1>
+
+			<!-- add a form below the h1 -->
+			<form class="new-task">
+				<input type="text" name="text" placeholder="Type to add new tasks" />
+			</form>
+		</header>
+
+		<ul>
+			<!-- I think this is a for each loop. -->
+			<!-- for each task do task?  -->
+			{{#each tasks}}
+				{{> task}}
+			{{/each}}
+		</ul>
+	</div>
+</body>
+
+<!-- template is the UI elements displayed in the for-each loop-->
+<template name="task">
+	<!-- {{#if condition }} result{{/end if}}-->
+	<!-- adds checked css class to the task. ALlowing for unique css-->
+  <li class="{{#if checked}}checked{{/if}}">
+  	<!-- define a delete button for each "task"-->
+  	<!-- the &times is an html reserved character for mutliplaction symbol-->
+    <button class="delete">&times;</button>
+    <!-- define a checkbox item. checked == html checkbox; {{checked}}== checked from above  -->
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+    <!-- span== finer level div; {{text}} == the collection item-->
+    <span class="text">{{text}}</span>
+  </li>
+</template>
